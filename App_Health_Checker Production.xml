@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Rule PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Rule created="1754649629866" id="0ae8404b985718bd8198894494aa7961" language="beanshell" modified="1755775901701" name="SLF_Rule_SAM_App_Health_Checker">
+<Description>Rule Runner Task used to Perform Application Test Connection</Description>
+<ReferencedRules>
+<Reference class="sailpoint.object.Rule" id="0ae841918cf6179b818dc1170f8b407f" name="SLF_RuleLibrary_Generic_Utils"/>
+</ReferencedRules>
+<Signature returnType="String">
+<Inputs>
+<Argument name="context">
+<Description>
+A sailpoint.api.SailPointContext object that can be used to query the database if necessary.
+</Description>
+</Argument>
+<Argument name="config">
+<Description>
+To take input from rule config as parameter.
+</Description>
+</Argument>
+</Inputs>
+</Signature>
+<Source>
+
+import sailpoint.api.TaskManager;
+import sailpoint.object.TaskResult;
+import sailpoint.object.TaskResult.CompletionStatus;
+import sailpoint.object.TaskItem;
+import sailpoint.object.TaskDefinition;
+import sailpoint.object.Custom;
+import sailpoint.object.Attributes;
+import sailpoint.connector.Connector;
+import sailpoint.connector.ConnectorFactory;
+import sailpoint.object.Application;
+import java.text.SimpleDateFormat;
+import sailpoint.tools.Message;
+import java.io.FileWriter;
+
+
+log.error("Start of SLF_Rule_SAM_App_Health_Checker");
+List errorMessage = new ArrayList();
+List successMessage = new ArrayList();
+List ignoreApplications = new ArrayList();
+String linuxPath = null;
+String notificationWorkGroup = null;
+String customObjectName = "SLF_Custom_SAM_App_Health_Checker";
+String fileName = "SAM_App_Health_Checker.csv";
+String currentDate = getCurrentDate();
+String currentServerAddress = getCurrentServerAddress();
+String samAHCTaskURL = "http://localhost:8080/IdentityIQ/monitor/tasks/renderResults.jsf?TaskResultId=";
+String reportPath = null;
+String delimter = "\"";
+String delimterComma = ",";
+String nextDelimter = "\",\"";
+String newLineDelimter = "\n";
+String mailConfig = null;
+int successConnection = 0;
+int failureConnection = 0;
+int totalConnection = 0;
+int ignoreConnection = 0;
+boolean sendEmail = false;
+
+
+try
+{
+Custom customAHC = context.getObjectByName(Custom.class,customObjectName);
+if(null!=customAHC)
+{
+linuxPath = customAHC.get("linuxPath");
+samAHCTaskURL = customAHC.get("taskURL");
+mailConfig = customAHC.get("mailConfig");
+notificationWorkGroup = customAHC.get("notificationWorkGroup");
+log.error("linuxPath:"+linuxPath);
+log.error("notificationWorkGroup:"+notificationWorkGroup);
+reportPath = linuxPath + fileName;
+if(validateFolder(linuxPath) &amp;&amp; deleteFileIfExists(reportPath))
+{
+if(null!=customAHC.get("ignoreApplications"))
+ignoreApplications = customAHC.get("ignoreApplications");
+FileWriter writer = new FileWriter(reportPath);
+String header = "";
+header += (delimter+"Time Stamp"+nextDelimter+"Application Name"+nextDelimter+"Connector Type"+nextDelimter+"Status"+nextDelimter+"Failure Message"+delimter);
+writer.append(header);
+writer.append(newLineDelimter);
+writer.flush();
+
+List apps = context.getObjects(Application.class);
+for(app:apps)
+{
+totalConnection++;
+String rowData = nullCheckerForCSVData(getCurrentDate());
+if(null!=apps)
+{
+String appName = app.getName();
+log.error("Evaluating :"+appName);
+String appConnectorName = app.getType();
+rowData += (delimterComma+nullCheckerForCSVData(appName)+delimterComma+nullCheckerForCSVData(appConnectorName));
+if(ignoreApplications.contains(appName))
+{
+rowData += (delimterComma+nullCheckerForCSVData("Ignored"));
+ignoreConnection++;
+}
+else
+{
+try {
+Connector connector = ConnectorFactory.getConnector(app, null);
+connector.testConfiguration();
+rowData += (delimterComma+nullCheckerForCSVData("Success"));
+successConnection ++;
+//log.error("Test Connection Successful !!");
+} catch (Exception e) {
+failureConnection ++;
+String rawErrorMsg = e.getMessage();
+log.error("\n\n----\n\nrawErrorMsg:"+rawErrorMsg);
+String rawErrorMsgCleaned = nullCheckerForCSVData(rawErrorMsg);
+log.error("rawErrorMsgCleaned:"+rawErrorMsgCleaned);
+rowData += (delimterComma+nullCheckerForCSVData("Failure")+delimterComma+rawErrorMsgCleaned);
+errorMessage.add("Failed on "+appName);
+//log.error("Test Connection Failed"+FailureMsg);
+}
+
+}
+}
+writer.append(rowData);
+writer.append(newLineDelimter);
+writer.flush();
+}
+
+
+}
+else
+{
+errorMessage.add("Unable to create the directory for SAM App Health Checker:"+linuxPath);
+}
+}
+else
+{
+errorMessage.add("Custom Object Not found:"+customObjectName);
+}
+}
+catch (Exception e)
+{
+log.error("Exception on Main Call of SLF_Rule_CodeDynamo_Automation :"+e.getMessage);
+errorMessage.add("Exception on Main Call of SLF_Rule_CodeDynamo_Automation :"+e.getMessage);
+}
+
+//evaulate email send
+if(null!=mailConfig)
+{
+if(mailConfig.equalsIgnoreCase("error") &amp;&amp; failureConnection>0)
+sendEmail = true;
+else if(!mailConfig.equalsIgnoreCase("error"))
+sendEmail = true;
+}
+else
+sendEmail = true;
+
+log.error("sendEmail:"+sendEmail);
+
+//send email with attachment
+if(sendEmail)
+{
+Map args1 = new HashMap();
+Map args2 = new HashMap();
+Map filePath = new HashMap();
+Map emailSenders = new HashMap();
+
+filePath.put(reportPath,"SAM App Health Checker.csv");
+
+args1.put("job","SAM App Health Checker");
+args1.put("serverInfo",currentServerAddress);
+args1.put("timeStamp",currentDate);
+if(failureConnection>0)
+args1.put("warningMessage","SAM AHC detected Application connection failure. Kindly ensure that this is fixed");
+
+args1.put("message","SAM App Health Checker ran on Server "+currentServerAddress+". Attached is the detailed report of Application with there Status. If there are any application with failure, Kindly evaulate the failure messgae and take appropriate action. SAM AHC is designed to detect Application Failures." );
+if(null!=taskResult.getId())
+args2.put("SAM App Health Checker Task Results",samAHCTaskURL+taskResult.getId());
+args2.put("Total Application Scanned",totalConnection);
+args2.put("Successful Test Connection Application",successConnection);
+args2.put("Failure Test Connection Application",failureConnection);
+args2.put("Ignored Test Connection Application",ignoreConnection);
+
+args1.put("moreInfo",args2);
+args1.put("errorInfo",errorMessage);
+List senders = getWorkGroupEmail(notificationWorkGroup);
+if(null!=senders &amp;&amp; !senders.isEmpty())
+emailSenders.put("TO",senders);
+else
+emailSenders.put("TO","SAM_Support@sunlife.com");
+emailSenders.put("CC","ASCI.InfoSec.DBTS@sunlife.com");
+log.error("Sending Email");
+sendEmailwithAttachment(filePath, args1, "SLF_Emailtemplate_SAM_App_Health_Checker_Notification", emailSenders);
+}
+
+if (taskResult.hasErrors())
+{
+taskResult.setCompletionStatus(CompletionStatus.Error);
+taskResult.setMessages(errorMessage);
+}
+else if(!errorMessage.isEmpty())
+{
+String errorMessagetoDisplay = "Error:";
+for(String a : errorMessage)
+{
+errorMessagetoDisplay = "Error:" + a;
+taskResult.addMessage(Message.error(errorMessagetoDisplay));
+}
+}
+taskResult.addMessage(new Message("Total Application Scanned:"+totalConnection, null));
+taskResult.addMessage(new Message("Successful Test Connection Application:"+successConnection, null));
+taskResult.addMessage(new Message("Failure Test Connection Application:"+failureConnection, null));
+taskResult.addMessage(new Message("Ignored Test Connection Application:"+ignoreConnection, null));
+taskResult.addMessage(new Message("Find the Report on :"+reportPath, null));
+
+log.error("End of SLF_Rule_SAM_App_Health_Checker");
+
+</Source>
+</Rule>
