@@ -1,0 +1,901 @@
+//Set Owner to group
+import sailpoint.object.Identity;
+ 
+Identity appOwner1 = groupApplication.getOwner();
+ 
+accountGroup.setOwner(appOwner1);
+ 
+//Context.Serach using Filter,Queryoption, iterator
+import sailpoint.object.Identity;
+  import sailpoint.api.IdentityService;
+  import sailpoint.object.Application;
+  import sailpoint.object.Link;
+  import java.util.List;
+  import java.util.Iterator;
+  import sailpoint.object.Filter;
+  import sailpoint.object.QueryOptions;
+  import sailpoint.tools.Util;
+ 
+  //Identity identity;
+  Filter deptf=Filter.eq("jobFamily", "Business Development (Non Actuarial)");
+  QueryOptions qo=new QueryOptions();
+  qo.addFilter(deptf);
+ 
+  List pro=new ArrayList();
+  pro.add("country");  //[0]
+  pro.add("division"); //[1]
+  pro.add("language"); //[2]
+  //Iterator&lt;Identity> idsearch=context.search(Identity.class, qo);
+  Iterator idsearch=context.search(Identity.class, qo,pro);
+ 
+  if(null!=idsearch)
+  {
+ 
+    while(idsearch.hasNext())
+    {
+ 
+      String identityname=idsearch.next()[2];
+      return identityname;
+      //identity=(Identity) idsearch.next();
+      //return identity.getName();
+      //return identity.getFirstname();
+      //return identity.getLastname();
+ 
+    }
+  }
+  
+  // Custom object fetching values, keys
+  import sailpoint.object.Identity;
+  import sailpoint.api.IdentityService;
+  import sailpoint.object.Application;
+  import sailpoint.object.Link;
+  import java.util.List;
+  import java.util.Iterator;
+  import sailpoint.object.Filter;
+  import sailpoint.object.QueryOptions;
+  import sailpoint.tools.Util;
+  import java.util.ArrayList;
+  import sailpoint.object.Custom;
+  import sailpoint.object.Attributes;
+ 
+  /* Custom **bleep**=context.getObjectByName(Custom.class, "SLF - Custom - ASIA PH CRM Salesforce - RoleProfileMapping");
+  Attributes allattr=**bleep**.getAttributes();
+  List usernames=allattr.getList("Department");
+ 
+  return usernames;*/
+ 
+  /* Custom **bleep**=context.getObjectByName(Custom.class, "SLF - Custom - ASIA PH CRM Salesforce - RoleProfileMapping");
+  Attributes allattr=**bleep**.getAttributes();
+  List permissionset=allattr.getList("PermissionSet");
+ 
+  return permissionset;*/
+ 
+  Custom **bleep**=context.getObjectByName(Custom.class, "SLF - Custom - ASIA PH CRM Salesforce - RoleProfileMapping");
+  Attributes allattr=**bleep**.getAttributes();
+  List roleprofilemapping=allattr.getList("RoleProfileMapping");
+ 
+  return roleprofilemapping;
+ 
+  //Save & Remove values to custom Objects:
+  Custom lc=context.getObjectByName(Custom.class, "SLF - Custom - GIS");
+  lc.put("emailDL", "abs@sunlife.com");
+  lc.put("SendEmail1","xyz@gmail.com");
+  lc.remove("("emailDL");
+  context.saveObject(lc);
+  context.commitTransaction();
+  
+  //encrypt,decrypt password for objects
+    //return context.decrypt("2:ACP:XomyfyICiyOSgLWtwNU7XjCeYbHUar6Ffd9eyzVE8GM=");
+  //return context.encrypt("santhosh");
+  return context.encrypt("Rajkumar", false);
+  
+  //Delete,remove any object from Sailpoint
+   Identity obj=context.getObjectByName(Identity.class, "BQ761");
+  Terminator terminator=new Terminator(context);
+  terminator.deleteObject(obj);
+  return "success";
+  
+ //Create a new Identity via rule
+ 
+  import java.util.ArrayList;
+  import java.util.List;
+ 
+  import sailpoint.object.Capability;
+  import sailpoint.tools.Util;
+  import sailpoint.object.Application;
+  import sailpoint.object.Filter;
+  import sailpoint.object.Identity;
+  import sailpoint.object.QueryOptions;
+  import sailpoint.api.ObjectUtil;
+  import sailpoint.object.Bundle;
+  import sailpoint.api.IdentityService;
+ 
+  Identity newId=new Identity();
+  newId.setName("Shankar");  //Mandatory
+  newId.setDisplayName("Vishnu Dada");
+  newId.setEmail("abc@gmail.com");
+  newId.setAttribute("firstname", "Rajkumar");
+  newId.setAttribute("lastname", "kumar");
+  Identity mnaname = context.getObjectByName(Identity.class, "hp21"); //Manager assign
+  newId.setManager(mnaname);
+ 
+  context.saveObject(newId);
+  context.commitTransaction();
+  return "success";
+  
+  //fetch all identities whose app name and dept matches
+   import java.util.ArrayList;
+  import java.util.List;
+ 
+  import sailpoint.tools.Util;
+  import sailpoint.object.Application;
+  import sailpoint.object.Filter;
+  import sailpoint.object.Identity;
+  import sailpoint.object.QueryOptions;
+  import sailpoint.api.ObjectUtil;
+  import sailpoint.object.Bundle;
+  import sailpoint.api.IdentityService;
+ 
+  /*Filter.eq("applicationref.name", "Asia Group Insurance System SLGFI1");
+    Filter.eq("jobFamilyCode", "JF_200");
+ 
+  Application app=context.getObjectByName(Application.class, "Asia Group Insurance System SLGFI1");
+  string appname = app.getName();
+  return appname;*/
+ 
+ 
+  Filter appide=Filter.and(Filter.eq("links.application.name", "Clarica - AD"),Filter.eq("division", "Risk Management"));
+  QueryOptions qo=new QueryOptions();
+  qo.addFilter(appide);
+ 
+  ArrayList jobappids=new ArrayList();
+  List allids = context.getObjects(Identity.class, qo);
+  
+  if((null!=allids) &amp;&amp; (!Util.isEmpty(allids)))
+ 
+  {
+    for(Identity deptids:allids)
+ 
+    {
+ 
+      jobappids.add(deptids.getDisplayName());
+    }
+ 
+  }
+ 
+  return jobappids;
+  
+  //Fetch Application Attributes
+   import java.util.ArrayList;
+  import java.util.List;
+  import java.util.Map;
+ 
+  import sailpoint.tools.Util;
+  import sailpoint.object.Application;
+  import sailpoint.object.Filter;
+  import sailpoint.object.Identity;
+  import sailpoint.object.QueryOptions;
+  import sailpoint.api.ObjectUtil;
+  import sailpoint.object.Bundle;
+  import sailpoint.api.IdentityService;
+ 
+  Application app1=context.getObjectByName(Application.class, "Asia Portfolio Asset Management System For Investment (PAM)");
+  String appNameValue=(String) appName.getStringAttributeValue("Group.file");
+  return appNameValue;
+  
+  /*Map appName1 = app1.getAttributes().getMap();
+  return (String) appName1.get("Group.file");*/
+  
+  //Get all Identities whose Active and country and other
+    import java.util.ArrayList;
+  import java.util.List;
+ 
+  import sailpoint.tools.Util;
+  import sailpoint.object.Application;
+  import sailpoint.object.Filter;
+  import sailpoint.object.Identity;
+  import sailpoint.object.QueryOptions;
+  import sailpoint.tools.Util;
+  import sailpoint.api.ObjectUtil;
+  import sailpoint.object.Bundle;
+ 
+ 
+  Filter displayf=Filter.eq("identityStatus", "Active");
+  Filter displayf1=Filter.and(Filter.like("displayName", "Ed",Filter.MatchMode.START),Filter.like("country", "HK",Filter.MatchMode.START));
+  //Filter displayf1=Filter.and(Filter.like("displayName", "Ed",Filter.MatchMode.START),Filter.like("country", "HK",Filter.MatchMode.START));
+  
+  List allfilter=new ArrayList();
+  allfilter.add(displayf);
+  allfilter.add(displayf1);
+  Filter finalfilter=Filter.and(allfilter);
+ 
+  QueryOptions qo=new QueryOptions();
+  qo.addFilter(finalfilter);
+ 
+  List alldispf = context.getObjects(Identity.class, qo);
+  ArrayList displayname=new ArrayList();
+ 
+  if((null!=alldispf) &amp;&amp; (!Util.isEmpty(alldispf)))
+  {
+ 
+    for(Identity allids:alldispf)
+ 
+    {
+ 
+      displayname.add(allids.getDisplayName());
+ 
+    }
+ 
+  }
+ 
+  return displayname;
+  
+  //Get all identities whose name start,end, contains char
+   import java.util.ArrayList;
+  import java.util.List;
+ 
+  import sailpoint.tools.Util;
+  import sailpoint.object.Application;
+  import sailpoint.object.Filter;
+  import sailpoint.object.Identity;
+  import sailpoint.object.QueryOptions;
+  import sailpoint.tools.Util;
+  import sailpoint.api.ObjectUtil;
+  import sailpoint.object.Bundle;
+ 
+ 
+  //Filter displayf=Filter.like("displayName", "P", Filter.MatchMode.START);
+  Filter displayf=Filter.like("displayName", "P", Filter.MatchMode.END);
+  QueryOptions qo=new QueryOptions();
+  qo.addFilter(displayf);
+ 
+  List&lt;Identity> alldispf = context.getObjects(Identity.class, qo);
+ 
+ 
+  ArrayList displayname=new ArrayList();
+  if((null!=alldispf) &amp;&amp; (!Util.isEmpty(alldispf)))
+  {
+ 
+    for(Identity allids:alldispf)
+ 
+    {
+ 
+      displayname.add(allids.getDisplayName());
+ 
+    }
+ 
+  }
+ 
+  return displayname;
+  
+  //Get all identities whose dept,county, other are null
+    import java.util.ArrayList;
+  import java.util.List;
+ 
+  import sailpoint.tools.Util;
+  import sailpoint.object.Application;
+  import sailpoint.object.Filter;
+  import sailpoint.object.Identity;
+  import sailpoint.object.QueryOptions;
+  import sailpoint.tools.Util;
+  import sailpoint.api.ObjectUtil;
+  import sailpoint.object.Bundle;
+ 
+ 
+  /*Filter deptf=Filter.isnull("country");
+  QueryOptions qo=new QueryOptions();
+  qo.addFilter(deptf);*/
+ 
+  List&lt;Identity> deptnotnull=context.getObjects(Identity.class, new QueryOptions().addFilter(Filter.isnull("country")));
+ 
+  ArrayList alldept=new ArrayList();
+  for (Identity deptname:deptnotnull)
+  {
+  
+    alldept.add(deptname.getDisplayName());
+  }
+  return alldept;
+  
+  //Fetch identities whose manager is xyz
+   import java.util.ArrayList;
+  import java.util.List;
+ 
+  import sailpoint.tools.Util;
+  import sailpoint.object.Application;
+  import sailpoint.object.Filter;
+  import sailpoint.object.Identity;
+  import sailpoint.object.QueryOptions;
+  import sailpoint.tools.Util;
+  import sailpoint.api.ObjectUtil;
+ 
+ 
+  Filter namefilter1=Filter.eq("manager.name", "JA96");
+  Filter namefilter=Filter.eq("manager.name", "HR83");
+  List allfilters=new ArrayList();
+  allfilters.add(namefilter);
+  allfilters.add(namefilter1);
+ 
+  Filter finalfilter=Filter.or(allfilters);
+ 
+    List&lt;Identity> allids=context.getObjects(Identity.class, new QueryOptions().addFilter(finalfilter));
+ 
+  if (!Util.isEmpty(allids))
+ 
+  {
+ 
+    List&lt;String> names=ObjectUtil.getObjectNames(allids);
+    return names;
+  }
+  
+  //Fetch identities whose costcentre,department or any Attribute specific
+    import java.util.ArrayList;
+  import java.util.List;
+  
+  import sailpoint.tools.Util;
+  import sailpoint.object.Application;
+  import sailpoint.object.Filter;
+  import sailpoint.object.Identity;
+  import sailpoint.object.QueryOptions;
+ 
+  // Filter f=Filter.eq(("costCentre", "851244");
+  //Filter f = Filter.and(Filter.eq("country", "HK"),Filter.eq("costCentre", "851244"));
+ 
+  Filter f = Filter.or(Filter.eq("country", "HK"),Filter.eq("costCentre", "851244"));
+  QueryOptions qo=new QueryOptions();
+  qo.addFilter(f);
+  ArrayList finalids=new ArrayList();
+  List&lt;Identity> allids = context.getObjects(Identity.class, qo);
+ 
+  if((allids!=null) &amp;&amp; (!Util.isEmpty(allids)))
+  {
+    for(Identity idname:allids)
+    {
+ 
+ 
+      finalids.add(idname.getDisplayName()); 
+    }
+ 
+  }
+  return finalids;
+  
+  //Capabality add to Identity
+    import sailpoint.object.Identity;
+  import sailpoint.api.IdentityService;
+  import sailpoint.object.Application;
+  import sailpoint.object.Link;
+  import java.util.List;
+  import java.util.Iterator;
+  import sailpoint.object.Filter;
+  import sailpoint.object.QueryOptions;
+  import sailpoint.tools.Util;
+  import java.util.ArrayList;
+  import sailpoint.object.Custom;
+  import sailpoint.object.Attributes;
+ 
+  Identity Id = context.getObjectByName(Identity.class, "HP01");
+  Capability cap=context.getObjectByName(Capability.class, "AccessManager");
+  if(Id !=null)
+  {
+    Id.add(cap);
+    context.saveObject(ide);
+    context.commitTransaction();
+  }
+ 
+  return "added";
+  
+  //Workgroup get(All) from SailPoint
+    import sailpoint.object.Identity;
+  import sailpoint.api.IdentityService;
+  import sailpoint.object.Application;
+  import sailpoint.object.Link;
+  import java.util.List;
+  import java.util.Iterator;
+  import sailpoint.object.Filter;
+  import sailpoint.object.QueryOptions;
+  import sailpoint.tools.Util;
+  import java.util.ArrayList;
+ 
+  Filter workgrpf=Filter.eq("workgroup", true);
+  QueryOptions qo=new QueryOptions();
+  qo.addFilter(workgrpf);
+  
+  ArrayList workgrpname=new ArrayList();
+  
+  List&lt;Identity> workgrplist=context.getObjects(Identity.class, qo);
+  
+ if(workgrplist!=null)
+ {
+  for(Identity wrk:workgrplist)
+  {
+ 
+    workgrpname.add(wrk.getDisplayName());
+ 
+  }
+   return workgrpname;
+ }
+ 
+ //Bundle add to identity
+  import sailpoint.object.Identity;
+  import sailpoint.object.Bundle;
+  import sailpoint.object.*;
+  import sailpoint.object.ObjectConfig;
+  import sailpoint.object.RoleAssignment;
+ 
+  Identity ide=context.getObjectByName(Identity.class, "HP08");
+  Bundle rolecd=context.getObjectByName(Bundle.class, "IT - Asia Portfolio Asset Management System For Investment (PAM) - Business Admin");
+ 
+  if(ide!=null)
+  {
+    ide.add(rolecd);
+    //ide.addAssignedRole(rolecd);
+    //ide.addDetectedRole(rolecd);
+    //ide.addRoleMetadata(rolecd);
+    context.saveObject(ide);
+    context.commitTransaction();
+  }
+  return "added";
+  
+  //Get all identities and all application in sailpoint env
+  import java.util.ArrayList;
+import sailpoint.object.Identity;
+import sailpoint.object.Application;
+import java.util.List;
+ 
+List&lt;Identity> idlist=context.getObjects(Identity.class);
+ArrayList allids=new ArrayList();
+ 
+for(Identity id:idlist)
+{
+ 
+allids.add(id.getName());
+}
+ 
+return allids;
+ 
+ 
+ 
+List&lt;Application> applist=context.getObjects(Application.class);
+  ArrayList allapps=new ArrayList();
+ 
+  for(Application app:applist)
+  {
+ 
+    allapps.add(app.getName());
+  }
+ 
+  return allapps;
+  
+  //Fetch link, linkAttribute and update that linkAttribute
+    import sailpoint.object.Identity;
+  import sailpoint.api.IdentityService;
+  import sailpoint.object.Application;
+  import sailpoint.object.Link;
+  import java.util.List;
+ 
+  Identity ide=context.getObjectByName(Identity.class, "HP21");
+ 
+  if(null!=ide)
+  {
+ 
+    Application app=context.getObjectByName(Application.class, "Asia Group Insurance System SLGFI1");
+    IdentityService idservice=new IdentityService(context);
+    List&lt;Link> links=idservice.getLinks(ide, app);
+    Link link=links.get(0);
+    //return link.getDisplayableName();
+    String createdby = (String) link.getAttribute("CREATED_BY");
+    if (createdby.equalsIgnoreCase("SAMUSR"))
+            {
+           
+            link.setAttribute("CREATED_BY", "venu");
+            context.saveObject(link);
+            context.commitTransaction();
+            }
+            
+            return "Success";
+ 
+ 
+  }
+  
+
+ 
+//Custamization rule sample
+if(null != object.getAttribute("Status")) {
+  if(object.getAttribute("Status").equals("Active") || object.getAttribute("Status").equals("LDAP")) {
+    object.put("IIQDisabled", false);
+  }
+else  {
+    object.put("IIQDisabled", true);
+  }
+}
+  return object;
+  
+  //Refresh Identity Cube task rule after PRV rule
+  import sailpoint.object.Filter;
+  import sailpoint.object.QueryOptions;
+  import sailpoint.object.Identity;
+  import sailpoint.object.TaskDefinition;
+  import sailpoint.object.TaskSchedule;
+  import sailpoint.api.TaskManager;
+  import sailpoint.object.ProvisioningPlan;
+  import sailpoint.tools.GeneralException;
+  import sailpoint.tools.Message;
+  import sailpoint.tools.Util;
+  import java.util.List;
+  import java.util.Iterator;
+  import sailpoint.object.Application;
+  import sailpoint.object.ProvisioningPlan.AccountRequest;
+  import sailpoint.object.ProvisioningPlan.AttributeRequest;
+  import sailpoint.object.ProvisioningProject;
+  import sailpoint.object.Bundle;
+  import sailpoint.object.ProvisioningTarget;
+  import sailpoint.object.Link;
+  import sailpoint.object.AccountSelection;
+  import sailpoint.object.AccountSelection.AccountInfo;
+  import java.util.ArrayList;
+  import sailpoint.api.Provisioner;
+  import sailpoint.api.IdentityService;
+  import org.apache.log4j.Logger;
+  import org.apache.log4j.Level;
+ 
+  Identity identity = plan.getIdentity();
+  log.error("Identity===" +identity.toXml());
+  String UserId = (String) plan.getIdentity().getName();
+  String Id = "name==";
+  String filter = Id+"\""+UserId+"\"";
+ 
+  log.error("Entering After Provisioning Rule");
+ 
+/*  IdentityService idService = new IdentityService(context);
+  List links = idService.getLinks(identity, application);
+ 
+  log.error("Links===" +links);
+    if (links == null || links.isEmpty()) {
+  if (links != null && !links.isEmpty()) {
+    List assignedRoles = identity.getAssignedRoles();
+    log.error("Assigned Roles===" +assignedRoles);
+    for (Bundle idRole :assignedRoles){
+      String dispName = idRole.getDisplayableName();
+      log.error("dispName===" +dispName);
+      if (dispName.contains("Ingenium HK")){
+        Bundle toBeRemoved = idRole;
+        log.error("toBeRemoved===" +toBeRemoved);
+        identity.removeAssignedRole(toBeRemoved);
+        identity.removeDetectedRole(toBeRemoved);
+        log.error("Identity After Removal===" +identity.toXml());
+ 
+      }
+ 
+    }
+    //save object
+    //  context.saveObject(identity);
+      log.error("Identity Summary" +identity.getBundleSummary());
+      identity. updateBundleSummary();
+      log.error("Identity Summary after updating" +identity.getBundleSummary());
+    context.saveObject(identity);
+      log.error("Identity saved");
+      context.commitTransaction();
+ 
+  } */
+ 
+  log.error("Provisioning Plan After Prov" +plan.toXml());
+  log.error("Provisioning Plan After Prov" +plan.toXml());
+ 
+  TaskDefinition task = context.getObjectByName(TaskDefinition.class,"Refresh Identity Cube");
+ 
+  if (task != null) {
+ 
+    try {    
+      task.setArgument("filter", filter);
+      //Task Schedule Setup
+      TaskSchedule taskSchedule = new TaskSchedule();
+      taskSchedule.setName("Schedule for " + task.getName());
+      taskSchedule.setDescription("Job Scheduled from Rule");
+      taskSchedule.setTaskDefinition(task);
+ 
+      taskSchedule.setLauncher("spadmin");
+      Date now = new Date();
+      taskSchedule.setNextExecution(now);
+      TaskManager tm = new TaskManager(context);
+      tm.runNow(taskSchedule);
+ 
+      log.error("Task Run");
+    } 
+    catch (Exception e) {
+      log.error("Exception processing request for "+task.getName());           
+    }        
+  }
+  
+  //Default group to add after Provisioning
+  import sailpoint.object.Identity;
+          import sailpoint.object.Link;
+          import java.util.List;
+          import java.util.Iterator;
+ 
+          Identity identityObject = identity;
+          List<Link> applicationLink = identityObject.getLinks();
+          Iterator<Link> iter = applicationLink.iterator();
+ 
+ 
+          while(iter.hasNext()){
+ 
+          Link app= iter.next();
+          String appName=app.getApplicationName();
+ 
+          if(appName.equalsIgnoreCase("Ingenium HK") && !app.isDisabled())
+          return true;
+ 
+          }
+          return false;
+  
+
+  //Rule - OrphanWFWI
+  <?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sailpoint PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<!-- (c) Copyright 2018 SailPoint Technologies, Inc., All Rights Reserved. -->
+<!--
+IMPORTANT NOTICE - rule logic and settings come as-is
+without fore-knowledge of any environemnt-specific
+implementation and/or customizations.
+To avoid adverse side-effects, Support recommends
+testing all rule settings before running in production,
+and active monitoring immediately after execution.
+-->
+<sailpoint>
+<Rule language="beanshell" name="SupportExtraWFWI">
+   <Description>Rule to find extra WorkItems on WorkflowCases</Description>
+   <Source>
+   <![CDATA[
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Map;
+import java.sql.Clob;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.Types;
+ 
+import oracle.jdbc.driver.OracleConnection;
+ 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+ 
+import sailpoint.object.WorkItem;
+import sailpoint.api.Workflower;
+import sailpoint.tools.Message;
+ 
+Log log = LogFactory.getLog("sailpoint.rule.SupportExtraWFWI");
+ 
+///
+/// for tracing purposes, add line to "log4j.properites" file 
+/// log4j trace: log4j.logger.sailpoint.rule.SupportExtraWFWI=all
+///
+/// @version: $Revision: 53050 $; $Date: 2019-11-22 13:28:10 -0600 (Fri, 22 Nov 2019) $;
+/////////////////////////////////////////////////////////////////////////////////////
+/// TOUCH ABOVE THIS LINE AT OWN PERIL!!!
+ 
+///
+/// OPTION 1) flag to control read-only mode
+/// false - scan only, do NOT modify WIs (default)
+/// true - archive WIs referencing WFCs and not vice-versa
+/// note: rule archives WIs w/null-valued "state" (ie, "std" WIs archive w/non-null "state")
+///
+ 
+boolean flagArchive = false; // true archives WI objs !!!
+ 
+///
+///
+/// TOUCH BELOW THIS LINE AT OWN PERIL!!!
+/////////////////////////////////////////////////////////////////////////////////////
+///
+ 
+/// (private) global flag for executions with TaskResult (vs rule's direct invocation)
+boolean flagTR = ((void != taskResult) && (null != taskResult)) ? true : false;
+ 
+/*
+** run SQL cmd and return arraylist of resultset's first column-value
+** note: avoid Oracle cursor-overflow by always closing statement!
+** https://stackoverflow.com/questions/12192592/java-sql-sqlexception-ora-01000-maximum-open-cursors-ex...
+**
+** note: convert pesky CLOB to String as needed
+** https://docs.oracle.com/javase/tutorial/jdbc/basics/retrieving.html
+*/
+ArrayList funcALst_SelectSQL(String argSQL) {
+  ArrayList aLstRet = new ArrayList();
+ 
+  try {
+    log.info("using SELECT [" +argSQL+ "]");
+ 
+    Connection connTmp = context.getConnection(); // when running in "direct" datasource envs (sailpointcontext)
+    if (connTmp instanceof OracleConnection) ((OracleConnection)connTmp).setStatementCacheSize(0);
+ 
+    PreparedStatement stmtTmp = connTmp.prepareStatement(argSQL);
+    try {
+      ResultSet rsTmp = stmtTmp.executeQuery();
+ 
+      try { while (rsTmp.next()) {
+ 
+        String strCol = null;
+        ResultSetMetaData rsMD = rsTmp.getMetaData();
+        if (java.sql.Types.CLOB == rsMD.getColumnType(1)) {
+          Clob clobTmp = rsTmp.getClob(1); strCol = (String) clobTmp.getSubString(1, (int) clobTmp.length());
+        } else strCol = (String) rsTmp.getString(1);
+ 
+        if ((null != strCol) && (0 < strCol.length())) aLstRet.add(strCol);
+      } } finally { try { rsTmp.close(); } catch(Exception ignore) {} }
+    } finally { try { stmtTmp.close(); } catch(Exception ignore) {} }
+ 
+  } catch(java.sql.SQLException e) { log.error("SELECT failed: ", e); throw e; }
+ 
+  return aLstRet;
+}
+ 
+/*
+** scan WorkflowCases for WorkItem ids (find all workitemid values)
+** 32-char str after skipping initial double-quote!!!
+** workitemId="2c90ad0561aec6090161aedecc370030"
+*/
+ArrayList funcALst_ScanLstWFC(List argLstWFC) {
+  ArrayList aLstRet = new ArrayList();
+ 
+  for (String strObjId : argLstWFC) {
+    String strSQL = "SELECT workflow FROM spt_workflow_case WHERE id = '"+strObjId+"'";
+    ArrayList aLstWFC = funcALst_SelectSQL(strSQL);
+ 
+    if (0 != aLstWFC.size()) {
+      String strTmp = aLstWFC.get(0);
+      String strKey = " workItemId="; int keyLen = strKey.length() + 1; int keyEnd = 0;
+      while (keyLen < (keyEnd = (strTmp.indexOf(strKey, keyEnd) + keyLen))) aLstRet.add(strTmp.substring(keyEnd,keyEnd+32));
+    }
+  }
+ 
+  return aLstRet;
+}
+ 
+/* ===== type values from WorkItem w/non-null WorkflowCase ========== */
+/* ===== do NOT include "Event" type WIs (ie, reserved/internal type, not from end-users) ========== */
+String sql0 = "SELECT DISTINCT type FROM spt_work_item WHERE type <> 'Event' AND workflow_case IS NOT NULL";
+ 
+/* ===== WorkItem ids in WorkItem table w/non-null WorkflowCase and type ========== */
+/* ===== omit WIs created AFTER WFC last modification (aka in-flight workflower thread?) ========== */
+String sql1a = "SELECT tblA.id FROM spt_work_item tblA JOIN spt_workflow_case tblB ON tblB.id = tblA.workflow_case WHERE tblA.type = '";
+String sql1b = "' AND tblA.workflow_case IS NOT NULL AND tblA.created < tblB.modified";
+ 
+/* ===== WorkflowCase ids in Workitem table w/non-null WorkflowCase and type ========== */
+String sql2a = "SELECT DISTINCT tblB.id FROM spt_work_item tblA JOIN spt_workflow_case tblB ON tblB.id = tblA.workflow_case WHERE tblA.type = '";
+String sql2b = "' AND tblA.workflow_case IS NOT NULL AND tblA.created < tblB.modified";
+ 
+///
+/// funcVoid_HandleRunRuleExec()
+/// detect task invocation (aka RuleExecutor) and options
+/// note: "sailpoint.task.RuleExecutor" passes "config" as built-in map
+/// note: option0 confirms "config" type
+///
+void funcVoid_HandleRunRuleExec() {
+  if ((void != config) && (config instanceof Map)) {
+    String UI_CFG_KEY_0 = "SupportExtraWFWI";
+    String UI_CFG_KEY_1 = "flagArchive";
+ 
+    log.debug("ruleconfig = " + config.toString());
+ 
+    if ((null == config.get(UI_CFG_KEY_0)) || !Boolean.parseBoolean((String) config.get(UI_CFG_KEY_0))) return;
+    if (null != config.get(UI_CFG_KEY_1)) flagArchive = Boolean.parseBoolean((String) config.get(UI_CFG_KEY_1));
+  }
+}
+ 
+///
+/// main() logic
+///
+ 
+int cntTot = 0;
+int cntBad = 0;
+int cntDecache = 0;
+String strRet = "Rule interrupted";
+String strRetEnd = "";
+ 
+funcVoid_HandleRunRuleExec();
+ 
+try { 
+  for (String strType : funcALst_SelectSQL(sql0)) {
+    if (flagTR) { taskResult.setProgress("Scanning "+ strType +" WorkItem(s)"); context.saveObject(taskResult); context.commitTransaction(); }
+  
+// get WIs of type, non-null workflowcase values
+    ArrayList aLstWI = funcALst_SelectSQL(sql1a + strType + sql1b);
+    int cntType = aLstWI.size(); cntTot += cntType;
+  
+// get WIs from WFCs and drop them from list (leaving extra WIs)
+// ?! SF87307 - indexoutofboundsexception when passing empty list fo removeAll() ?!
+    ArrayList aLstTmp = funcALst_ScanLstWFC(funcALst_SelectSQL(sql2a + strType + sql2b));
+    if (0 != aLstTmp.size()) aLstWI.removeAll(aLstTmp); cntBad += aLstWI.size();
+ 
+// output stats and archive WIs (ignore archiving errors)
+    strRetEnd += cntType.toString() +" "+ strType +"-type WorkItem(s); "+ aLstWI.size().toString() +" extra WorkItem(s)"+ (flagArchive?" archived\n":"\n");
+    for (String strWI : aLstWI) {
+      String strMsg = "no "+ strType +" WorkItem "+ strWI +" in WorkflowCase";
+  
+      if (flagArchive) try {
+        strMsg += " - archived";
+        if (flagTR) { taskResult.setProgress("Archiving "+ strType +" WorkItem "+ strWI); context.saveObject(taskResult); }
+        Workflower wfTmp = new Workflower(context);
+        WorkItem wiTmp = context.getObjectById(WorkItem.class, strWI);
+        if ((null != wiTmp) && (null != wfTmp.archive(wiTmp))) context.removeObject(wiTmp);
+        context.commitTransaction(); if (0 == (++cntDecache % 30)) context.decache();
+      } catch(Exception ignore) {}
+  
+      log.warn(strMsg); if (flagTR) taskResult.addMessage(new Message((flagArchive? Message.Type.Info : Message.Type.Warn), strMsg, null));
+    }
+  }
+  if (flagTR) { taskResult.setProgress("Completed"); context.saveObject(taskResult); context.commitTransaction(); }
+  strRet = cntTot.toString() +" Total WorkItem(s); "+ cntBad.toString() +" extra WorkItem(s)"+ (flagArchive?" archived\n":"\n") + strRetEnd;
+} catch(Exception e) {
+  log.error("Rule exception: ", e);
+  if (flagTR) taskResult.addMessage(new Message(Message.Type.Error, "Rule exception", null));
+} finally { try { context.decache(); } catch(Exception ignore) {} }
+ 
+return strRet;
+]]>
+   </Source>
+</Rule>
+<TaskDefinition name="Support Scan or Archive Workflow WorkItems Rule" progressInterval="5000" progressMode="String" resultAction="Delete" template="true" type="Generic">
+   <Attributes>
+      <Map>
+        <entry key="flagArchive" value="false"/>
+        <entry key="ruleName" value="SupportExtraWFWI"/>
+        <!-- "hidden" options to rule -->
+        <entry key="ruleConfig">
+           <value>
+              <Map>
+                 <entry key="SupportExtraWFWI" value="true"/>
+              </Map>
+           </value>
+        </entry>
+      </Map>
+   </Attributes>
+   <Signature>
+    <Inputs>
+      <Argument helpKey="Archive extra WorkItem(s)" name="flagArchive" type="boolean">
+        <Prompt>Archive Workflow WorkItem(s) not found in WorkflowCase</Prompt>
+      </Argument>
+    </Inputs>
+    <Returns>
+      <Argument name="Result: " type="string">
+        <Prompt>Processing Summary</Prompt>
+      </Argument>
+    </Returns>
+   </Signature>
+  <Description>Task to find and to remove Workflow WorkItem(s) not appearing in WorkflowCase</Description>
+  <Owner> <Reference class="sailpoint.object.Identity" name="spadmin"/> </Owner>
+</TaskDefinition>
+<TaskDefinition executor="sailpoint.task.RuleExecutor" name="Support Task for extra WorkItems on Workflow" progressInterval="5000" progressMode="String" resultAction="Delete" type="Generic">
+   <Attributes>
+      <Map>
+        <entry key="flagArchive" value="false"/>
+        <entry key="ruleName" value="SupportExtraWFWI"/>
+        <!-- "hidden" options to rule -->
+        <entry key="ruleConfig">
+           <value>
+              <Map>
+                 <entry key="SupportExtraWFWI" value="true"/>
+              </Map>
+           </value>
+        </entry>
+      </Map>
+   </Attributes>
+   <Signature>
+    <Inputs>
+      <Argument helpKey="Archive extra WorkItem(s)" name="flagArchive" type="boolean">
+        <Prompt>Archive Workflow WorkItem(s) not found in WorkflowCase</Prompt>
+      </Argument>
+    </Inputs>
+    <Returns>
+      <Argument name="Result: " type="string">
+        <Prompt>Processing Summary</Prompt>
+      </Argument>
+    </Returns>
+   </Signature>
+  <Description>Task to find and to archive Workflow WorkItem(s) missing from WorkflowCase</Description>
+  <Owner> <Reference class="sailpoint.object.Identity" name="spadmin"/> </Owner>
+  <Parent> <Reference class="sailpoint.object.TaskDefinition" name="Support Scan or Archive Workflow WorkItems Rule"/> </Parent>
+</TaskDefinition>
+</sailpoint>
