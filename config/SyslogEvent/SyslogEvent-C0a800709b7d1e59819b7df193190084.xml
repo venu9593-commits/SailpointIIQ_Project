@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE SyslogEvent PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<SyslogEvent classname="sailpoint.rest.ApplicationResource" eventLevel="ERROR" lineNumber="344" quickKey="0000000039" server="DESKTOP-RU1GDU7" thread="http-nio-8080-exec-6" username="spadmin">
+  <EventMessage>sailpoint.connector.InvalidConfigurationException: [ InvalidConfigurationException ] 
+ [ Possible suggestions ] Ensure the resource mentioned in the Okta URL is correct. The URL resource is //api/v1/groups/00gyt9q703OyvW7Yf697/users?limit=10000 
+ [ Error details ] Request execution failed. HTTP Error code : 405, Okta Error code : E0000022, errorSummary : The endpoint does not support the provided HTTP method, errorCauses:[].</EventMessage>
+</SyslogEvent>

@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Custom PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Custom name="SLF - Custom - Salesforce International FSC (Bermuda)">
+  <Attributes>
+    <Map>
+      <entry key="Profiles">
+        <value>
+          <List>
+            <String>Base CRR Custom Profile</String>
+            <String>CRR Compliance Profile</String>
+            <String>CRR Manager Profile</String>
+            <String>CRR Operations Profile</String>
+            <String>CRR Read Only</String>
+            <String>CRR Title Specialist</String>
+            <String>CRR Underwriting</String>
+            <String>SLF Bermuda FSC Standard User</String>
+            <String>SLF Intl Admin</String>
+            <String>SLF INT Standard User</String>
+            <String>Sun Life Integration Profile</String>
+            <String>System Administrator</String>
+            <String>Wealth CDD Manager</String>
+            <String>Wealth CDD</String>
+            <String>Wealth Clarifications Profile</String>
+            <String>Wealth Compliance Profile</String>
+            <String>Wealth Processing Profile</String>
+            <String>Wealth QA/CRA Review Profile</String>
+            <String>Wealth Read Only Profile</String>
+          </List>
+        </value>
+      </entry>
+      <entry key="Roles">
+        <value>
+          <List>
+            <String>Life/Wealth Operations</String>
+            <String>Life/Wealth Operations Manager</String>
+            <String>Life Operations</String>
+            <String>Life Operations Manager</String>
+            <String>Life Underwriter</String>
+            <String>Life Underwriting Manager</String>
+            <String>Compliance</String>
+            <String>Compliance Manager</String>
+            <String>Distribution Manager</String>
+            <String>Distribution Manager International Distribution</String>
+            <String>Head of International Distribution</String>
+            <String>Support and Administration</String>
+            <String>Wealth AML/CDD Manager</String>
+            <String>Wealth AML/CDD Specialist</String>
+            <String>Wealth Operations</String>
+            <String>Wealth Operations Manager</String>
+          </List>
+        </value>
+      </entry>
+    </Map>
+  </Attributes>
+</Custom>

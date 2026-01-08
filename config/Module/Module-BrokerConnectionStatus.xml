@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Module PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Module description="ui_broker_conn_status_module_desc" name="Broker Connection Status">
+  <Attributes>
+    <Map>
+      <entry key="enabledConfigKey" value="messageBusEnabled"/>
+      <entry key="healthCheckClass" value="sailpoint.messagebus.monitoring.impl.BrokerConnectionHealthChecker"/>
+      <entry key="timeoutInSeconds" value="60"/>
+    </Map>
+  </Attributes>
+</Module>

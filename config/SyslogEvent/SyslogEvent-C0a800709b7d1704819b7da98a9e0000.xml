@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE SyslogEvent PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<SyslogEvent classname="sailpoint.server.AccessHistoryWriterService" eventLevel="ERROR" lineNumber="187" quickKey="0000000032" server="DESKTOP-RU1GDU7" thread="main" username="system">
+  <EventMessage>queue://accessHistoryExtractedObjects is not reachable on the broker.</EventMessage>
+</SyslogEvent>

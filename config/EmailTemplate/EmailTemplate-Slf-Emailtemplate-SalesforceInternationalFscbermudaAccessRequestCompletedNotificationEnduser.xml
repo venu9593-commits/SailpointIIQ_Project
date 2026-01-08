@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE EmailTemplate PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<EmailTemplate name="SLF - EmailTemplate - Salesforce International FSC (Bermuda) Access Request completed Notification EndUser">
+  <Body>
+<![CDATA[<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<body>
+<p align="right">
+<font size=2 face="sans-serif" color=#757575>Access Request ID: $AccessRequestID</font>
+</p>
+<font face="sans-serif" size="2">
+<br>Hello $firstName</br>
+<br/>
+<br/>
+You will soon receive an email from <a href="support@salesforce.com">support@salesforce.com</a> containing info for accessing your new Salesforce user account. The email contains a link to a page where you will be required to create a password (disregard mention of a temporary password, if any), and will ask you to answer a password hint/security question.
+<br/>
+<br/>
+Please note:
+<ul>
+<li> <b> It is important that you answer this question </b> as doing so will allow you to access the system should you forget your password.</li>
+<li> This link expires in 24 hours so please complete this task at the earliest</li>
+</ul>
+<br>Please note: </br>
+<ul>
+<li> <b>It is important that you answer this security question </b> as doing so will allow you to access the system should you forget your password.</li>
+<li> This link does have an expiration so please complete this task at the earliest</li>
+<li> All Salesforce users must use the most recent version of Google Chrome. Chrome is approved by use by Salesforce.com whereas IE is not, thus IE should not be used for accessing Salesforce </li>
+</ul> o Instructions for setting Google Chrome as your default browser:
+<ul>
+<li> On your computer, click the Start menu then select Control Panel</li>
+<li> Click Default Programs then click <b>Set your default programs</b></li>
+<li> Click the box under <b>Web browser</b> and select Google Chrome</li>
+</ul>
+<br/>
+<b>Password reset:</b>
+<br/>
+You will soon receive a password reset email from <a href="support@salesforce.com">support@salesforce.com</a> containing a link to a page where you will be required to create a password (disregard mention of a temporary password, if any). This page will also ask you to answer a password hint/security question.
+<br/>
+<br>Please note: </br>
+<ul>
+<li> <b>It is important that you answer this question</b> as doing so will allow you to access the system should you forget your password.</li>
+<li> This link expires in 24 hours so please complete this task at the earliest</li>
+</ul>
+<br/>
+There are two methods for logging into Salesforce:
+<br/>
+<ol type="1">
+<li> Single sign-on (SSO), and </li>
+<li> Via a web browser.</li>
+</ol>
+Logging in via SSO <b>is required</b> as it establishes your connection from within the firewall. This allows you to access all Salesforce data and attached documents, whereas logging in via a webpage gives you access to Salesforce data but not attachments. Using a webpage should be done if you can't access The Source for whatever reason or if you don't need access to attachments, as this method provides better performance.
+<br/>
+<br/>
+<b>Logging via SSO:</b>
+<ol type="1">
+<li> Enter URL in browser (Google Chrome Preferred): <a href="https://slfintl.my.salesforce.com/">https://slfintl.my.salesforce.com/</a></li>
+<li> You will see the “Log in with SG Prod Azure SSO” on the screen. Click this link to log in.</li>
+</ol>
+<br/>
+<b> Logging in via web page - Production</b>
+<br/>
+Login URL: <a href="https://login.salesforce.com/">https://login.salesforce.com/</a>
+<br/>
+Username: your email address
+<br/>
+Password: reference 1st paragraph above
+<br/>
+<br/>
+<br/>
+Regards,
+<br/><b>SLGS - Information Security - Identity and Access Management</b>
+<br/>
+<font color="#FFBF18" face="sans-serif" size="2">Life's brighter under the sun</font>
+</font>
+</body>
+</html>]]>
+</Body>
+  <Description>Email Template for notifying the requestor that new request is submitted.</Description>
+  <Signature>
+    <Inputs>
+      <Argument name="personName" type="String">
+        <Description>The employee for which the request was submitted</Description>
+      </Argument>
+      <Argument name="personID" type="String">
+        <Description>The employee ID for which the request was submitted</Description>
+      </Argument>
+      <Argument name="applicationName" type="String">
+        <Description>Application for which the request was submitted</Description>
+      </Argument>
+      <Argument name="accessReqID" type="String">
+        <Description>Access request ID</Description>
+      </Argument>
+      <Argument name="firstName" type="String">
+        <Description>firstName ofthe user</Description>
+      </Argument>
+    </Inputs>
+  </Signature>
+  <Subject>Notification =&gt; Create Access Request $accessReqID for $applicationName has been completed for $personID - $personName</Subject>
+</EmailTemplate>

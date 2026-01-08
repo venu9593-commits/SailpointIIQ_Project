@@ -1,0 +1,3 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE LocalizedAttribute PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<LocalizedAttribute attribute="description" locale="en_US" name="Salesforce International FSC (Bermuda):description:en_US" targetClass="Application" targetName="Salesforce International FSC (Bermuda)" value="FSC is widely used for doing Client's Risk assessment basis on the financial details provided by him/her. It also calculate client risk rating basis on the occupation &amp; income."/>

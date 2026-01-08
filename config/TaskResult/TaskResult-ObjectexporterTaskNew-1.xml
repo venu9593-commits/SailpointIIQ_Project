@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE TaskResult PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<TaskResult completed="1767106049878" completionStatus="Success" host="DESKTOP-RU1GDU7" launched="1767106020056" launcher="spadmin" name="ObjectExporter Task NEW - 1" runLength="29" schedule="cb37f50a31024b26b16b62ed03e50228" type="Generic">
+  <Attributes>
+    <Map>
+      <entry key="exportDetails" value="Application: 1 &#10;ApplicationScorecard: 1 &#10;AuditConfig: 1 &#10;AuditEvent: 7 &#10;AuthenticationQuestion: 7 &#10;Capability: 43 &#10;CertificationDefinition: 1 &#10;Configuration: 14 &#10;Custom: 1 &#10;DatabaseVersion: 1 &#10;Dictionary: 1 &#10;DynamicScope: 4 &#10;EmailTemplate: 66 &#10;Form: 57 &#10;FullTextIndex: 1 &#10;Identity: 2 &#10;IdentityTrigger: 7 &#10;JasperTemplate: 97 &#10;LocalizedAttribute: 1 &#10;MessageTemplate: 1 &#10;Module: 1 &#10;MonitoringStatistic: 8 &#10;ObjectConfig: 8 &#10;PasswordPolicy: 1 &#10;Plugin: 1 &#10;Policy: 7 &#10;QuickLink: 16 &#10;RequestDefinition: 26 &#10;RightConfig: 1 &#10;Rule: 34 &#10;RuleRegistry: 1 &#10;SPRight: 214 &#10;ScoreConfig: 1 &#10;Server: 1 &#10;ServerStatistic: 98 &#10;ServiceDefinition: 12 &#10;SyslogEvent: 21 &#10;TaskDefinition: 136 &#10;TaskResult: 4 &#10;TaskSchedule: 7 &#10;TimePeriod: 9 &#10;UIConfig: 1 &#10;Widget: 7 &#10;Workflow: 41 &#10;WorkflowRegistry: 1 &#10;Workgroup: 4 &#10;YAMLConfig: 7"/>
+      <entry key="objectsExported">
+        <value>
+          <Integer>982</Integer>
+        </value>
+      </entry>
+    </Map>
+  </Attributes>
+  <Definition>
+    <Reference class="sailpoint.object.TaskDefinition" name="ObjectExporter Task NEW"/>
+  </Definition>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+</TaskResult>

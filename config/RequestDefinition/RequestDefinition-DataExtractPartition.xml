@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE RequestDefinition PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<RequestDefinition executor="sailpoint.request.DataExtractRequestExecutor" name="Data Extract Partition" retryMax="20">
+  <Attributes>
+    <Map>
+      <entry key="dequeueRetryWaitInterval" value="2000"/>
+      <entry key="maxThreads" value="5"/>
+      <entry key="numDequeueRetries" value="5"/>
+    </Map>
+  </Attributes>
+</RequestDefinition>

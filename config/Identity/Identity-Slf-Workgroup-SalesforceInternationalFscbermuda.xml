@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Identity PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Identity name="SLF - Workgroup - Salesforce International FSC (Bermuda)">
+  <Attributes>
+    <Map>
+      <entry key="displayName" value="SLF - Workgroup - Salesforce International FSC (Bermuda)"/>
+    </Map>
+  </Attributes>
+</Identity>
