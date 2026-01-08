@@ -1,5 +1,4 @@
 # Build outputs
-build/
 dist/
 target/
 *.war
