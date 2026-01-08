@@ -1,15 +1,14 @@
-# General secrets and keys
-*.pem
-*.jks
-*.key
-secret.properties
-
 # Build outputs
 build/
 dist/
 target/
 *.war
+
+# Ignore jars everywhere EXCEPT lib/
 *.jar
+!lib/
+!lib/**/*.jar
+
 
 # SailPoint SSB specific
 ssb/build/
