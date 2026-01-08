@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/venu9593-commits/SailpointIIQ_Project.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                script {
+                    bat 'ant clean build'  // or use Gradle or other build tools as needed
+                }
+            }
+        }
+        stage('Archive Artifacts') {
+            steps {
+                archiveArtifacts artifacts: 'build/identityiq.war', fingerprint: true
+            }
+        }
+    }
+    post {
+        success {
+            echo 'Build completed successfully!'
+        }
+        failure {
+            echo 'Build failed. Check the logs.'
+        }
+    }
+}
