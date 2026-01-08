@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE SyslogEvent PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<SyslogEvent classname="sailpoint.connector.ConnectorFactory$1" eventLevel="ERROR" lineNumber="251" quickKey="0000000004" server="DESKTOP-RU1GDU7" thread="http-nio-8080-exec-4" username="spadmin">
+  <EventMessage>unable to decrypt strings for: password</EventMessage>
+</SyslogEvent>

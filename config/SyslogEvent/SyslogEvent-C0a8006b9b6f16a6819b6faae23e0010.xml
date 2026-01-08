@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE SyslogEvent PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<SyslogEvent classname="sailpoint.api.TaskManager" eventLevel="ERROR" lineNumber="1007" quickKey="0000000014" server="DESKTOP-RU1GDU7" thread="QuartzScheduler_Worker-3" username="Scheduler">
+  <EventMessage>Exception: [Could not find class: sailpoint.object.HistoricalAccountCapture]</EventMessage>
+  <Stacktrace>sailpoint.tools.GeneralException: Could not find class: sailpoint.object.HistoricalAccountCapture
+	at sailpoint.services.standard.task.ExportXML.buildIdNameMap(ExportXML.java:723)
+	at sailpoint.services.standard.task.ExportXML.execute(ExportXML.java:185)
+	at sailpoint.api.TaskManager.runSync(TaskManager.java:981)
+	at sailpoint.api.TaskManager.runSync(TaskManager.java:764)
+	at sailpoint.scheduler.JobAdapter.execute(JobAdapter.java:128)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+</Stacktrace>
+</SyslogEvent>

@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE TaskSchedule PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<TaskSchedule lastExecution="1767106019921" name="cb37f50a31024b26b16b62ed03e50228" state="Executing">
+  <Arguments>
+    <Map>
+      <entry key="executor" value="ObjectExporter Task NEW"/>
+      <entry key="launcher" value="spadmin"/>
+      <entry key="locale" value="en_GB"/>
+      <entry key="timezone" value="Asia/Calcutta"/>
+    </Map>
+  </Arguments>
+  <Description>Immediate task runner</Description>
+</TaskSchedule>

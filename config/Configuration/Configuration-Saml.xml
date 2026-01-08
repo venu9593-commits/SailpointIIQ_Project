@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Configuration PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Configuration name="SAML">
+  <Attributes>
+    <Map>
+      <entry key="IdentityNow">
+        <value>
+          <SAMLConfig assertionConsumerService="http://localhost:8080/identityiq/home.jsf" bindingMethod="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" entityId="http://localhost:8080/identityiq/home.jsf" idpServiceUrl="https://trial-3525675.okta.com/app/trial-3525675_sailpointiiqsso_1/exkytarskwaeSU9J1697/sso/saml" issuer="http://www.okta.com/exkytarskwaeSU9J1697" nameIdFormat="urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified">
+            <IdpPublicKey>-----BEGIN CERTIFICATE-----
+MIIDqjCCApKgAwIBAgIGAZt99gDiMA0GCSqGSIb3DQEBCwUAMIGVMQswCQYDVQQGEwJVUzETMBEG
+A1UECAwKQ2FsaWZvcm5pYTEWMBQGA1UEBwwNU2FuIEZyYW5jaXNjbzENMAsGA1UECgwET2t0YTEU
+MBIGA1UECwwLU1NPUHJvdmlkZXIxFjAUBgNVBAMMDXRyaWFsLTM1MjU2NzUxHDAaBgkqhkiG9w0B
+CQEWDWluZm9Ab2t0YS5jb20wHhcNMjYwMTAyMDkwNjEyWhcNMzYwMTAyMDkwNzEyWjCBlTELMAkG
+A1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFjAUBgNVBAcMDVNhbiBGcmFuY2lzY28xDTAL
+BgNVBAoMBE9rdGExFDASBgNVBAsMC1NTT1Byb3ZpZGVyMRYwFAYDVQQDDA10cmlhbC0zNTI1Njc1
+MRwwGgYJKoZIhvcNAQkBFg1pbmZvQG9rdGEuY29tMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIB
+CgKCAQEAtOmdz/q6GL1qx7D8dH4IgElpLVmFbgFjB0huOms0dSoIFzcrBqQzWzFIijF4mtCYJsOn
+vV0sWrYjw1xjGLphx/sq3+kxIqj7tUqrWyBfLal11adNqXe8GtAVltScA3zQx4mWWMcXDuNpiErv
+SUs3L7gANBUkgCH0tN7OAI90pA3h547irtVDuzGERR7s5ihjfiIGpyGXxqAahFyOrIHnxV1W707c
+2Rkbph+6sGDg2jxGYOl8IXxsAfDGNEFUX4N/TDfkpv3d94W3FbfQSy8GgFiGRjIfqaEzulgWQkcX
+rE5KDwC8+N1aOGkFGabgRqb3bIPXLuxqdDpZh7r5eVGgVwIDAQABMA0GCSqGSIb3DQEBCwUAA4IB
+AQCcYL2Ovabl1feVB5iQRNHCigs6CrCWaYAYhjUNwx4Xmi+S67t6vaBvHGmih4d3U4xnmUMlqVFU
+Ape+VWIhKzEC7/otFronD4V9xgvm1n2HfVZVhEU0HEUn2MD3jTnDZ3q1RfQj/yI2yYO6Mq67f2pX
+w1a569A3bIUSOZWNYGwkW/s3H0GW8r9ve5MJkInHg4t4qSYegByWyx5Iz6HcoopkbnjvgdDtf+IB
+hl6S3wJ4rCxwDqPRdgdNAoK7uNfYyc878ZdK99I0c0ut9atpblSvQfxkHys7JnKyNJC+9BH2fqJX
+l1iQcuPL+BetdQfQqbLn9pQe8IJDplBzLB/D4ET5
+-----END CERTIFICATE-----</IdpPublicKey>
+            <RuleRef>
+              <Reference class="sailpoint.object.Rule" name="IdentityNowSAML"/>
+            </RuleRef>
+          </SAMLConfig>
+        </value>
+      </entry>
+    </Map>
+  </Attributes>
+</Configuration>

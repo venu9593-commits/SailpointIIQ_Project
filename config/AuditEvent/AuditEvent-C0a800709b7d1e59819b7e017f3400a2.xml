@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE AuditEvent PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<AuditEvent action="DebugObjectBrowserChange" attributeName="op" attributeValue="create" interface="UI" serverHost="DESKTOP-RU1GDU7" source="spadmin" target="Identity: venu1010@gmail.com">
+  <Attributes>
+    <Map>
+      <entry key="DebugObjectBrowserChange" value="Class: Identity Id/Name: venu1010@gmail.com Action: Create in Debug Object Browser by User spadmin"/>
+      <entry key="Object Name" value="venu1010@gmail.com"/>
+    </Map>
+  </Attributes>
+</AuditEvent>

@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE EmailTemplate PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<EmailTemplate name="SLF - EmailTemplate - Salesforce International FSC (Bermuda) Access Request completed Notification App team">
+  <Body>
+<![CDATA[<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<body>
+<font face="sans-serif" size="2">
+<br/>
+<b>Hello Team,</b>
+<br/>
+<br/>
+This is to inform you that $applicationName $ops access request for <b>$personID</b> - <b>$personName</b> is completed in the Security Access Management System (SAM).
+<br/>
+<br/>
+Regards,
+<br/>
+<b>SLGS - Information Security - Identity and Access Management</b>
+<br/>
+<font color="#FFBF18" face="sans-serif" size="2">Life's brighter under the sun</font>
+</font>
+</body>
+</html>]]>
+</Body>
+  <Description>Email Template for notifying the requestor that new request is submitted.</Description>
+  <Signature>
+    <Inputs>
+      <Argument name="personName" type="String">
+        <Description>The employee for which the request was submitted</Description>
+      </Argument>
+      <Argument name="personID" type="String">
+        <Description>The employee ID for which the request was submitted</Description>
+      </Argument>
+      <Argument name="applicationName" type="String">
+        <Description>Application for which the request was submitted</Description>
+      </Argument>
+      <Argument name="accessReqID" type="String">
+        <Description>Access request ID</Description>
+      </Argument>
+      <Argument name="firstName" type="String">
+        <Description>firstName ofthe user</Description>
+      </Argument>
+      <Argument name="ops" type="String">
+        <Description>Operation</Description>
+      </Argument>
+    </Inputs>
+  </Signature>
+  <Subject>Notification =&gt; $ops Access Request $accessReqID for $applicationName has been completed for $personID - $personName</Subject>
+</EmailTemplate>
