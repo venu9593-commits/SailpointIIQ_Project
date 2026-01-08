@@ -1,18 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE Server PUBLIC "sailpoint.dtd" "sailpoint.dtd">
-<Server heartbeat="1767523481626" name="DESKTOP-RU1GDU7">
+<Server heartbeat="1767867386921" name="DESKTOP-RU1GDU7">
   <Attributes>
     <Map>
       <entry key="applicationStatus"/>
-      <entry key="cpuUsage" value="38.1"/>
-      <entry key="databaseResponseTime" value="6"/>
+      <entry key="cpuUsage" value="9.68"/>
+      <entry key="databaseResponseTime" value="3"/>
       <entry key="lastStatisticUpdate">
         <value>
-          <Date>1767523446250</Date>
+          <Date>1767867298881</Date>
         </value>
       </entry>
-      <entry key="memoryUsage" value="372988440"/>
-      <entry key="memoryUsagePercentage" value="40.8"/>
+      <entry key="memoryUsage" value="257392256"/>
+      <entry key="memoryUsagePercentage" value="28.2"/>
       <entry key="moduleStatus">
         <value>
           <Map>
@@ -21,7 +21,7 @@
                 <Map>
                   <entry key="lastPing">
                     <value>
-                      <Date>1767523446190</Date>
+                      <Date>1767867298869</Date>
                     </value>
                   </entry>
                   <entry key="status">
@@ -44,7 +44,7 @@
       </entry>
       <entry key="taskThreads">
         <value>
-          <Integer>1</Integer>
+          <Integer>0</Integer>
         </value>
       </entry>
     </Map>

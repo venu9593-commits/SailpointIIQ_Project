@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE TaskResult PUBLIC "sailpoint.dtd" "sailpoint.dtd">
-<TaskResult completed="1767523201323" completionStatus="Success" host="DESKTOP-RU1GDU7" launched="1767523200114" launcher="System" name="Perform maintenance" runLength="1" runLengthAverage="3" runLengthDeviation="-66" schedule="Perform maintenance" type="System">
+<TaskResult completed="1767867300613" completionStatus="Success" host="DESKTOP-RU1GDU7" launched="1767867300057" launcher="System" name="Perform maintenance" runLengthAverage="1" runLengthDeviation="-100" schedule="Perform maintenance" type="System">
   <Attributes>
     <Map>
       <entry key="attachmentsPruned" value="0"/>
