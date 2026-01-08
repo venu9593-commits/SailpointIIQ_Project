@@ -1,5 +1,35 @@
+# General secrets and keys
+*.pem
+*.jks
+*.key
+secret.properties
+
+# Build outputs
 build/
 dist/
 target/
 *.war
 *.jar
+
+# SailPoint SSB specific
+ssb/build/
+ssb/dist/
+ssb/extract/
+
+# Compiled Java classes
+*.class
+
+# Logs and temporary files
+*.log
+logs/
+temp/
+tmp/
+
+
+# IDE-specific files
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+.DS_Store
