@@ -130,6 +130,26 @@
     <property name="build.iiqBinaryExtract" location="${build}/extract"/>
     <property name="build.iiqBinaryExtractDelta" location="${build}/subset"/>
 
+<!-- ========================================================= -->
+<!-- SailPoint SSB Ant Classpath -->
+<!-- ========================================================= -->
+<path id="ssb.classpath">
+    <fileset dir="${basedir}/lib">
+        <include name="**/*.jar"/>
+    </fileset>
+</path>
+
+<!-- Ant-Contrib tasks -->
+<taskdef resource="net/sf/antcontrib/antlib.xml">
+    <classpath refid="ssb.classpath"/>
+</taskdef>
+
+<!-- SailPoint SSB Ant tasks -->
+<taskdef name="buildInit"
+         classname="sailpoint.services.tools.ant.BuildInitTask"
+         classpathref="ssb.classpath"/>
+
+
     <target name="init-properties">
         <!-- Allows you to essentially dereference a property -->
         <macrodef name="propertycopy">
