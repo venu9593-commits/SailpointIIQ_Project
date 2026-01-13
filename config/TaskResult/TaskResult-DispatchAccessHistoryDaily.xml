@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE TaskResult PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<TaskResult completed="1767514205682" completionStatus="Success" host="DESKTOP-RU1GDU7" launched="1767514177243" launcher="System" name="Dispatch Access History daily" partitioned="true" runLength="28" runLengthAverage="255" runLengthDeviation="-89" schedule="Dispatch Access History daily" type="System">
+  <Attributes>
+    <Map>
+      <entry key="dataExtractMessageFilter" value="Dispatch Access History daily"/>
+      <entry key="taskResultPartitions">
+        <value>
+          <List>
+            <TaskResult completed="1767514205235" completionStatus="Success" host="DESKTOP-RU1GDU7" launched="1767514191619" name="Access History processor number 1 of 5">
+              <Attributes>
+                <Map>
+                  <entry key="extractDetails"/>
+                  <entry key="totalExtractedObjects" value="0"/>
+                  <entry key="totalExtractedObjectsDispatched" value="0"/>
+                  <entry key="totalExtractedObjectsFailed" value="0"/>
+                  <entry key="totalExtractedObjectsNotFound" value="0"/>
+                </Map>
+              </Attributes>
+              <Progress>Finished Partition[Access History processor number 1 of 5]</Progress>
+            </TaskResult>
+            <TaskResult completed="1767514205449" completionStatus="Success" host="DESKTOP-RU1GDU7" launched="1767514191677" name="Access History processor number 2 of 5">
+              <Attributes>
+                <Map>
+                  <entry key="extractDetails">
+                    <value>
+                      <List>
+                        <TaskStatistics name="Extracted Objects Dispatched Types">
+                          <TaskStatistics name="extractedObject type">
+                            <TaskStatistic data="1" name="identity"/>
+                          </TaskStatistics>
+                        </TaskStatistics>
+                      </List>
+                    </value>
+                  </entry>
+                  <entry key="totalExtractedObjects" value="1"/>
+                  <entry key="totalExtractedObjectsDispatched" value="1"/>
+                  <entry key="totalExtractedObjectsFailed" value="0"/>
+                  <entry key="totalExtractedObjectsNotFound" value="0"/>
+                </Map>
+              </Attributes>
+              <Progress>Finished Partition[Access History processor number 2 of 5]</Progress>
+            </TaskResult>
+            <TaskResult completed="1767514205463" completionStatus="Success" host="DESKTOP-RU1GDU7" launched="1767514191734" name="Access History processor number 3 of 5">
+              <Attributes>
+                <Map>
+                  <entry key="extractDetails">
+                    <value>
+                      <List>
+                        <TaskStatistics name="Extracted Objects Dispatched Types">
+                          <TaskStatistics name="extractedObject type">
+                            <TaskStatistic data="1" name="identity"/>
+                          </TaskStatistics>
+                        </TaskStatistics>
+                      </List>
+                    </value>
+                  </entry>
+                  <entry key="totalExtractedObjects" value="1"/>
+                  <entry key="totalExtractedObjectsDispatched" value="1"/>
+                  <entry key="totalExtractedObjectsFailed" value="0"/>
+                  <entry key="totalExtractedObjectsNotFound" value="0"/>
+                </Map>
+              </Attributes>
+              <Progress>Finished Partition[Access History processor number 3 of 5]</Progress>
+            </TaskResult>
+            <TaskResult completed="1767514205369" completionStatus="Success" host="DESKTOP-RU1GDU7" launched="1767514191787" name="Access History processor number 4 of 5">
+              <Attributes>
+                <Map>
+                  <entry key="extractDetails"/>
+                  <entry key="totalExtractedObjects" value="0"/>
+                  <entry key="totalExtractedObjectsDispatched" value="0"/>
+                  <entry key="totalExtractedObjectsFailed" value="0"/>
+                  <entry key="totalExtractedObjectsNotFound" value="0"/>
+                </Map>
+              </Attributes>
+              <Progress>Finished Partition[Access History processor number 4 of 5]</Progress>
+            </TaskResult>
+            <TaskResult completed="1767514205427" completionStatus="Success" host="DESKTOP-RU1GDU7" launched="1767514191831" name="Access History processor number 5 of 5">
+              <Attributes>
+                <Map>
+                  <entry key="extractDetails"/>
+                  <entry key="totalExtractedObjects" value="0"/>
+                  <entry key="totalExtractedObjectsDispatched" value="0"/>
+                  <entry key="totalExtractedObjectsFailed" value="0"/>
+                  <entry key="totalExtractedObjectsNotFound" value="0"/>
+                </Map>
+              </Attributes>
+              <Progress>Finished Partition[Access History processor number 5 of 5]</Progress>
+            </TaskResult>
+            <TaskResult completed="1767514205682" completionStatus="Success" host="DESKTOP-RU1GDU7" launched="1767514205534" name="Finish Request"/>
+          </List>
+        </value>
+      </entry>
+      <entry key="totalObjectMessages">
+        <value>
+          <Integer>2</Integer>
+        </value>
+      </entry>
+    </Map>
+  </Attributes>
+  <Definition>
+    <Reference class="sailpoint.object.TaskDefinition" name="Dispatch Access History"/>
+  </Definition>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+</TaskResult>

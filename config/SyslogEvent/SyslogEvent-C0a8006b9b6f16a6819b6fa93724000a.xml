@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE SyslogEvent PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<SyslogEvent classname="sailpoint.server.CsrfService" eventLevel="ERROR" lineNumber="78" quickKey="0000000011" server="DESKTOP-RU1GDU7" thread="http-nio-8080-exec-4" username="spadmin">
+  <EventMessage>CSRF validation failed for /identityiq/rest/workItemNotifications/count</EventMessage>
+</SyslogEvent>

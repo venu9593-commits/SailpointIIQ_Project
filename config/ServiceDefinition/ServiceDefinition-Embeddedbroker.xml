@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE ServiceDefinition PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<ServiceDefinition hosts="global" name="EmbeddedBroker" serviceType="STARTUP_SERVICE">
+  <Attributes>
+    <Map>
+      <entry key="lastConfigurationTime"/>
+      <entry key="requiredService" value="true"/>
+      <entry key="timeoutMillis" value="-1"/>
+    </Map>
+  </Attributes>
+  <Description>Service definition for the Embedded Broker Service.</Description>
+</ServiceDefinition>

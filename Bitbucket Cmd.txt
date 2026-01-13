@@ -1,0 +1,25 @@
+Git branch -a -> gives list of all branches
+
+Git fetch --all -> fetches all branches
+
+Git checkout -b SLF_IAM -> change the branch
+
+Git pull origin SLF_IAM - pull the updated data from the branch
+
+Git status ->shows list of files changed
+
+Git add . -> staging
+
+Git commit -m "comments here"
+
+git push --set-upstream origin SLF_IAM
+
+
+git rebase --skip
+
+After you get the non-fast-forward error, just do below :
+git pull --rebase origin <name-of-the-remote-branch> // This will fetch the remote changes to your local branch. On top of that, it will apply your local commits.
+Then
+git push origin <name-of-the-remote-branch> //This will apply your local changes in the local copy of the remote branch to the actual remote branch repo in git
+
+ 

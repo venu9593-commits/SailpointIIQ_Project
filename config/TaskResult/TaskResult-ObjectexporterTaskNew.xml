@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE TaskResult PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<TaskResult host="DESKTOP-RU1GDU7" launched="1767867391547" launcher="spadmin" live="true" name="ObjectExporter Task NEW" runLengthAverage="52" schedule="ada995b7e84143389ad85ecb22097d6e" type="Generic">
+  <Definition>
+    <Reference class="sailpoint.object.TaskDefinition" name="ObjectExporter Task NEW"/>
+  </Definition>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <Progress>Exporting class AccountGroup</Progress>
+</TaskResult>

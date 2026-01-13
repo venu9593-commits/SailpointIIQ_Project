@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Identity PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Identity name="venu1010@gmail.com">
+  <Attributes>
+    <Map>
+      <entry key="displayName" value="Venu Hs"/>
+      <entry key="firstname" value="Venu"/>
+      <entry key="lastname" value="Hs"/>
+    </Map>
+  </Attributes>
+</Identity>

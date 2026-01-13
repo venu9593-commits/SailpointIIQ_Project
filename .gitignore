@@ -1,0 +1,33 @@
+# Build outputs
+dist/
+target/
+*.war
+
+# Ignore jars everywhere EXCEPT lib/
+*.jar
+!lib/
+!lib/**/*.jar
+
+
+# SailPoint SSB specific
+ssb/build/
+ssb/dist/
+ssb/extract/
+
+# Compiled Java classes
+*.class
+
+# Logs and temporary files
+*.log
+logs/
+temp/
+tmp/
+
+
+# IDE-specific files
+.idea/
+*.iml
+.project
+.classpath
+.settings/
+.DS_Store

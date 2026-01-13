@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE SyslogEvent PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<SyslogEvent classname="sailpoint.api.TaskManager" eventLevel="ERROR" lineNumber="1007" quickKey="0000000021" server="DESKTOP-RU1GDU7" thread="QuartzScheduler_Worker-5" username="Scheduler">
+  <EventMessage>Exception: [com.sailpoint.pse.plugin.objectexporter.ObjectExporter]</EventMessage>
+  <Stacktrace>sailpoint.tools.GeneralException: com.sailpoint.pse.plugin.objectexporter.ObjectExporter
+	at sailpoint.server.DynamicLoader.getClass(DynamicLoader.java:191)
+	at sailpoint.server.DynamicLoader.instantiate(DynamicLoader.java:205)
+	at sailpoint.api.TaskManager.getTaskExecutor(TaskManager.java:1138)
+	at sailpoint.api.TaskManager.runSync(TaskManager.java:918)
+	at sailpoint.api.TaskManager.runSync(TaskManager.java:764)
+	at sailpoint.scheduler.JobAdapter.execute(JobAdapter.java:128)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+Caused by: java.lang.ClassNotFoundException: com.sailpoint.pse.plugin.objectexporter.ObjectExporter
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1351)
+	at org.apache.catalina.loader.WebappClassLoaderBase.loadClass(WebappClassLoaderBase.java:1160)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:467)
+	at java.base/java.lang.Class.forName(Class.java:458)
+	at sailpoint.server.DynamicLoader.loadRule(DynamicLoader.java:254)
+	at sailpoint.server.DynamicLoader.classForName(DynamicLoader.java:158)
+	at sailpoint.server.DynamicLoader.getClass(DynamicLoader.java:188)
+	... 7 more
+</Stacktrace>
+</SyslogEvent>
